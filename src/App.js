@@ -1,18 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import Title from './components/title';
+import SearchBar from './components/search-bar';
+import WeatherPanel from './components/weather-panel';
+
+const city = {name:'Bristol', time: '10', temp: '20', wind:'2'};
+
+const days = [
+                    {name:'Thu', dayTemp: '10', nightTemp: '20'},
+                    {name:'Fri', dayTemp: '10', nightTemp: '20'},
+                    {name:'Sat', dayTemp: '10', nightTemp: '20'},
+                    {name:'Sun', dayTemp: '10', nightTemp: '20'},
+                    {name:'Mon', dayTemp: '10', nightTemp: '20'},
+    ];
+
+  const data = {
+
+    city: city,
+
+    days: days
+
+  }
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <Title title="Weather" />
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>
+          <SearchBar />
+          <WeatherPanel weatherData={data} />
+        </div>
       </div>
     );
   }
