@@ -1,9 +1,15 @@
-import React from 'react';
+import styled from 'styled-components';
 
-const Button = ({text}) => {
+const Button = styled.button`
 
-    return <div onClick={() => console.log('Click')}>{text}</div>;
+    background-color: lime;
+    color: white;
+    font-size: 1.5rem;
+    border: 0;
+    border-radius: 2px;
+    padding: 7px;
 
-}
+
+`;
 
 export default Button;

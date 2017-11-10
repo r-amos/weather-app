@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
-import './App.css';
 
-import Title from './components/title';
+import { injectGlobal } from 'styled-components';
+
+import AppTitle from './components/app-title';
 import SearchBar from './components/search-bar';
 import WeatherPanel from './components/weather-panel';
+
+injectGlobal`
+
+  * {
+    
+      margin: 0;
+      padding:0;
+      font-family: 'Helvetica';
+
+  }
+
+`;
 
 const city = {name:'Bristol', time: '10', temp: '20', wind:'2'};
 
@@ -28,7 +41,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Title title="Weather" />
+          <AppTitle text={'Weather App'}/>
         </header>
         <div>
           <SearchBar />
