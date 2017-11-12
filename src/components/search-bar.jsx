@@ -3,7 +3,9 @@ import Button from './button';
 
 import styled from 'styled-components';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+
+    console.log('butprops ', props);
 
     const Wrapper = styled.div`
 
@@ -19,11 +21,28 @@ const SearchBar = () => {
     
     `;
 
+    const moveCursorToEnd = (event) => {
+
+        let temp = event.target.value;
+        
+        event.target.value = '';
+
+        event.target.value = temp;
+
+    }
+
+
     return (
 
         <Wrapper>
-            <Input />
-            <Button>Search</Button>
+            <Input 
+                autoFocus 
+                onFocus={moveCursorToEnd} 
+                onChange={(event) => props.onInputChange(event.target.value)} 
+                value={props.term} 
+                onKeyPress={props.onEnter} 
+            />
+            <Button onClick={props.onButtonClick}>Search</Button>
         </Wrapper>
 
     );

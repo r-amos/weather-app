@@ -1,8 +1,1 @@
-const constants = {
-
-    ADD_CITY: "ADD_CITY",
-    REMOVE_CITY: "REMOVE_CITY"
-    
-}
-
-export default constants;
+export const GET_WEATHER = 'GET_WEATHER';

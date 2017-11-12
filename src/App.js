@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { injectGlobal } from 'styled-components';
 
 import AppTitle from './components/app-title';
-import SearchBar from './components/search-bar';
-import WeatherPanel from './components/weather-panel';
+import SearchContainer from './containers/search-container';
+import WeatherPanel from './containers/weather-panel';
 
 injectGlobal`
 
@@ -44,7 +44,7 @@ class App extends Component {
           <AppTitle text={'Weather App'}/>
         </header>
         <div>
-          <SearchBar />
+          <SearchContainer />
           <WeatherPanel weatherData={data} />
         </div>
       </div>

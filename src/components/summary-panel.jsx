@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SummaryPanel = ({city}) => {
+const SummaryPanel = ({city},{onButtonClick}) => {
 
     return (
 
