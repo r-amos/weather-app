@@ -5,8 +5,6 @@ import styled from 'styled-components';
 
 const SearchBar = (props) => {
 
-    console.log('butprops ', props);
-
     const Wrapper = styled.div`
 
         padding-bottom:50px;

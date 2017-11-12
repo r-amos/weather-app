@@ -2,13 +2,13 @@ import React from 'react'
 
 import DaySummaryPanel from './day-summary-panel';
 
-const DaySummaryPanels = ({days}) => {
+const DaySummaryPanels = ({list}) => {
 
     return (
 
-        days.map((day, id) => {
+        list.map((weather, id) => {
             
-            return <DaySummaryPanel key={id} day={day} />
+            return <DaySummaryPanel key={id} day={weather} />
                     
         })
 

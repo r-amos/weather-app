@@ -12,15 +12,33 @@ export const getWeather = response => ({
 
 export function fetchWeather(city) {
 
-    return function (dispatch) {
+    const weatherAPIRequest = 
+        fetch(`${BASE_URL}weather?q=${city},uk&APPID=${API_KEY}`)
+        .then((response) => response.json());
 
-        const url = `${BASE_URL}weather?q=${city},uk&APPID=${API_KEY}`;
+    const forecastAPIRequest = 
+        fetch(`${BASE_URL}forecast?q=${city},uk&APPID=${API_KEY}`)
+        .then((response) => response.json());
 
-        return fetch(url)
+    let payload = {
 
-        .then(response => response.json())
-        .then(json => dispatch(getWeather(json)))
+        current: {},
+        forecast: {}
+
+    }
+
+    return function(dispatch) {
+
+        Promise.all([weatherAPIRequest, forecastAPIRequest])
+            .then((values) => {
+                payload["current"] = values[0];
+                payload["forecast"] = values[1];
+                return payload;
+            })
+            .then((payload) => dispatch(getWeather(payload)))
 
     }
 
 }
+
+

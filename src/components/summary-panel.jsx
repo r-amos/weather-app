@@ -1,15 +1,18 @@
 import React from 'react';
 
-const SummaryPanel = ({city},{onButtonClick}) => {
+const SummaryPanel = (props) => {
+
+    if(props.city === undefined) return null
 
     return (
 
         <div>
-            <h2>{city.name}</h2>
+            <h2>{props.city}</h2>
             <div>
-                <div>{city.time}</div>
-                <div>{city.temp}</div>
-                <div>{city.wind}</div>
+                <div>Avg. {props.temp.average}</div>
+                <div>Max. {props.temp.max}</div>
+                <div>Min. {props.temp.min}</div>
+                <div>Overall {props.description}</div>
             </div>
         </div>
 
