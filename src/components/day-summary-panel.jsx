@@ -3,6 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const DaySummaryPanel = ({day}) => {
+
+    console.log(day[0]);
+    console.log(day[0]['dt_txt']);
     
     const DayWrapper = styled.div`
     
@@ -32,7 +35,7 @@ const DaySummaryPanel = ({day}) => {
     return (
 
         <DayWrapper>
-            <DayTitle></DayTitle>
+            <DayTitle>{day[0]['dt_txt']}</DayTitle>
             <DaytimeTemp></DaytimeTemp>
             <NightTimeTemp></NightTimeTemp>
         </DayWrapper>

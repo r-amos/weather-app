@@ -27,11 +27,26 @@ const WeatherPanel = (props) => {
 
         }
 
+ 
+        const days = forecast.list.map(timeframe => timeframe['dt_txt'].substring(0,10)).filter((date,index, array) => array.indexOf(date) === index);
+        
+        let daySummary = new Map();
+        
+        days.forEach((key) => {
+
+            const value = forecast.list.filter((timeframe) => timeframe['dt_txt'].substring(0,10) === key);
+
+            daySummary.set(key,value);
+
+        });
+
         return ( 
+
             <div key={index}>
                 <SummaryPanel {...weather} />
-                <DaySummaryPanels {...forecast} />
+                <DaySummaryPanels data={daySummary} />
             </div>
+
             )
 
     });
