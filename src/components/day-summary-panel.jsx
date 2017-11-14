@@ -2,42 +2,65 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-const DaySummaryPanel = ({day}) => {
+const DaySummaryPanel = (props) => {
+ 
+    const dayHi = Math.round(props.weather.reduce((max,weather) => {
 
-    console.log(day[0]);
-    console.log(day[0]['dt_txt']);
+        const time = weather.dt_txt.slice(-8,-6);
+
+        if (time >= 6 && time < 18) {
+            
+            return Math.max(max,weather.main.temp);
+
+        }  
+
+        return max;
+
+    }, 0) - 273);
+
+   const nightLow = Math.round(props.weather.reduce((min,weather) => {
     
+        const time = weather.dt_txt.slice(-8,-6);
+
+        if (time < 6 || time >= 18) {
+
+            return Math.min(min,weather.main.temp);
+
+        } 
+        
+        return min;
+
+    },Infinity) - 273);
+
     const DayWrapper = styled.div`
     
-        background:grey;
-        margin-bottom:10px;
+        width: 10%;
     
     `;
 
     const DayTitle = styled.h3`
        
-        color: red;
     
     `;
 
-    const DaytimeTemp = styled.h3`
+    const DaytimeTemp = styled.div`
         
-        color: red;
+
     
     `;
 
-    const NightTimeTemp = styled.h3`
+    const NightTimeTemp = styled.div`
     
-    color: red;
+
 
     `;
     
     return (
 
         <DayWrapper>
-            <DayTitle>{day[0]['dt_txt']}</DayTitle>
-            <DaytimeTemp></DaytimeTemp>
-            <NightTimeTemp></NightTimeTemp>
+            <DayTitle>{new Date(props.day).toLocaleDateString('en-GB', { weekday: 'long' })}</DayTitle>
+            <DaytimeTemp>Max. Day: {dayHi}</DaytimeTemp>
+            <NightTimeTemp>Min. Night: {nightLow}</NightTimeTemp>
         </DayWrapper>
 
     );

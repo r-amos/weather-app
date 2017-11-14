@@ -7,15 +7,23 @@ const SearchBar = (props) => {
 
     const Wrapper = styled.div`
 
-        padding-bottom:50px;
+        display: flex;
+        margin-bottom:20px;
     
     `;
 
+    const Container = styled.div`
+
+        margin:auto;
+    
+    `
+
     const Input = styled.input`
 
-        height:40px;
-        width:60%;
-        font-size:30px;
+        width: 500px;
+        height:30px;
+        font-size:29px;
+        margin-bottom: 10px;
     
     `;
 
@@ -33,14 +41,16 @@ const SearchBar = (props) => {
     return (
 
         <Wrapper>
-            <Input 
-                autoFocus 
-                onFocus={moveCursorToEnd} 
-                onChange={(event) => props.onInputChange(event.target.value)} 
-                value={props.term} 
-                onKeyPress={props.onEnter} 
-            />
-            <Button onClick={props.onButtonClick}>Search</Button>
+            <Container>
+                <Input 
+                    autoFocus 
+                    onFocus={moveCursorToEnd} 
+                    onChange={(event) => props.onInputChange(event.target.value)} 
+                    value={props.term} 
+                    onKeyPress={props.onEnter} 
+                />
+                <Button onClick={props.onButtonClick}>Search</Button>
+            </Container>
         </Wrapper>
 
     );

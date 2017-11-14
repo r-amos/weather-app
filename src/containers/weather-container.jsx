@@ -1,8 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import styled from 'styled-components';
+
 import SummaryPanel from '../components/summary-panel';
 import DaySummaryPanels from '../components/day-summary-panels';
+
+const Container = styled.div`
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border: black solid 1px;
+    padding: 10px 0px;
+    margin: 0px 5px 10px 5px;
+
+`;
 
 const WeatherPanel = (props) => {
 
@@ -42,10 +56,10 @@ const WeatherPanel = (props) => {
 
         return ( 
 
-            <div key={index}>
+            <Container key={index}>
                 <SummaryPanel {...weather} />
                 <DaySummaryPanels data={daySummary} />
-            </div>
+            </Container>
 
             )
 
