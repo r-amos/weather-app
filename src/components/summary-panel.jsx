@@ -8,13 +8,15 @@ const SummaryPanel = (props) => {
 
         width:25%;
         margin-right:10px;
-        border-right: 1px solid black;
+        border-right: 1px solid #95a5a6;
 
     `;
 
     const Title = styled.h2`
 
         text-transform:uppercase;
+        display:flex;
+        height:75%;
 
     `;
 
@@ -31,7 +33,7 @@ const SummaryPanel = (props) => {
                 <div>Avg. {props.temp.average}</div>
                 <div>Max. {props.temp.max}</div>
                 <div>Min. {props.temp.min}</div>
-                <div>Overall {props.description}</div>
+                <div>Summary: {props.description}</div>
             </div>
         </Container>
 

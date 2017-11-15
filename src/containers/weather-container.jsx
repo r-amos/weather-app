@@ -10,9 +10,11 @@ const Container = styled.div`
 
     display: flex;
     flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-around;
     align-items: center stretch;
-    border: black solid 1px;
+    border: #95a5a6 solid 1px;
+    border-radius: 5px;
     padding: 10px;
     margin: 0px 20px 20px 20px;
 
