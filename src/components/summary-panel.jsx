@@ -6,15 +6,27 @@ const SummaryPanel = (props) => {
 
     const Container = styled.div`
 
-        width:15%;
+        width:25%;
+        margin-right:10px;
         border-right: 1px solid black;
-    
+
+    `;
+
+    const Title = styled.h2`
+
+        text-transform:uppercase;
+
+    `;
+
+    const mapContainer = styled.div`
+
+
     `;
 
     return (
 
         <Container>
-            <h2>{props.city}</h2>
+            <Title>{props.city}</Title>
             <div>
                 <div>Avg. {props.temp.average}</div>
                 <div>Max. {props.temp.max}</div>

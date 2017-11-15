@@ -11,10 +11,10 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: center stretch;
     border: black solid 1px;
-    padding: 10px 0px;
-    margin: 0px 5px 10px 5px;
+    padding: 10px;
+    margin: 0px 20px 20px 20px;
 
 `;
 

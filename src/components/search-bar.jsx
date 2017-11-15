@@ -14,13 +14,13 @@ const SearchBar = (props) => {
 
     const Container = styled.div`
 
-        margin:auto;
+        margin: 0px 20px;
     
     `
 
     const Input = styled.input`
 
-        width: 500px;
+        width: 300px;
         height:30px;
         font-size:29px;
         margin-bottom: 10px;

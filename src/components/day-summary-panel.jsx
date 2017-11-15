@@ -30,28 +30,32 @@ const DaySummaryPanel = (props) => {
         
         return min;
 
-    },Infinity) - 273);
+    }, Infinity) - 273);
 
     const DayWrapper = styled.div`
     
-        width: 10%;
+        flex-grow:1;
+        height: 300px;
+        margin:0.5em;
     
     `;
 
     const DayTitle = styled.h3`
-       
-    
+
+    `;
+
+    const DayIcon = styled.div`
+
+        height:80%;
+
     `;
 
     const DaytimeTemp = styled.div`
-        
 
     
     `;
 
     const NightTimeTemp = styled.div`
-    
-
 
     `;
     
@@ -59,6 +63,7 @@ const DaySummaryPanel = (props) => {
 
         <DayWrapper>
             <DayTitle>{new Date(props.day).toLocaleDateString('en-GB', { weekday: 'long' })}</DayTitle>
+            <DayIcon />
             <DaytimeTemp>Max. Day: {dayHi}</DaytimeTemp>
             <NightTimeTemp>Min. Night: {nightLow}</NightTimeTemp>
         </DayWrapper>
