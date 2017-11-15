@@ -22,7 +22,6 @@ const SummaryPanel = (props) => {
 
     const mapContainer = styled.div`
 
-
     `;
 
     return (
