@@ -6,8 +6,6 @@ import '../../node_modules/weather-icons/css/weather-icons.css';
 
 const DaySummaryPanel = (props) => {
 
-    console.log(props);
- 
     const dayHi = Math.round(props.weather.reduce((max,weather) => {
 
         const time = weather.dt_txt.slice(-8,-6);
