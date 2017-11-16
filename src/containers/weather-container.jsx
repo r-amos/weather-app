@@ -39,7 +39,8 @@ const WeatherPanel = (props) => {
             },
 
             description: current.weather[0].description,
-            wind: current.wind
+            wind: current.wind,
+            coord: current.coord
 
         }
 

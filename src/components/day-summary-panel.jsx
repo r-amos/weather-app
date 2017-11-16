@@ -43,18 +43,28 @@ const DaySummaryPanel = (props) => {
         background-color: #ecf0f1;
         border-radius: 5px;
         padding: 5px 10px 0px 10px;
+        display:flex;
+        flex-direction:column;
     
     `;
 
     const DayTitle = styled.h3`
 
         text-transform: uppercase;
+        display:flex;
+        justify-content:space-between;
+
+        span {
+
+            font-size: 1rem;
+
+        }
 
     `;
 
     const DayIcon = styled.div`
 
-        height: 75%;
+        flex:1;
         font-size:100px;
         display:flex;
 
@@ -74,12 +84,14 @@ const DaySummaryPanel = (props) => {
 
     const NightTimeTemp = styled.div`
 
+    padding-bottom:20px;
+
     `;
     
     return (
 
         <DayWrapper>
-            <DayTitle>{new Date(props.day).toLocaleDateString('en-GB', { weekday: 'long' })}</DayTitle>
+            <DayTitle>{new Date(props.day).toLocaleDateString('en-GB', { weekday: 'long' })} <span>{props.day}</span></DayTitle>
             <DayIcon>
                 <Icon className="wi wi-night-sleet" />
             </DayIcon>
