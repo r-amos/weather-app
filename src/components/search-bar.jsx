@@ -22,8 +22,10 @@ const SearchBar = (props) => {
 
         width: 300px;
         height:30px;
-        font-size:29px;
+        font-size:22px;
+        padding:0px 5px;
         margin-bottom: 10px;
+        text-transform:uppercase;
     
     `;
 

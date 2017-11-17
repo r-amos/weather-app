@@ -15,14 +15,14 @@ const SummaryPanel = (props) => {
         border-right: 1px solid #95a5a6;
         display:flex;
         flex-direction:column;
-        padding: 0 10px;
+        padding: 0px 20px 0px 10px;
 
     `;
 
     const Title = styled.h2`
 
         text-transform:uppercase;
-        padding-bottom:2px;
+        padding-bottom:5px;
 
     `;
 

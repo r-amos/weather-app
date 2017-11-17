@@ -2,15 +2,25 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import weatherIcons from './icon.json';
+
 import '../../node_modules/weather-icons/css/weather-icons.css';
 
 const DaySummaryPanel = (props) => {
 
-    const dayHi = Math.round(props.weather.reduce((max,weather) => {
+    console.log(props);
+
+    let day = false;
+
+    let night = false;
+
+    const hi = Math.round(props.weather.reduce((max,weather) => {
 
         const time = weather.dt_txt.slice(-8,-6);
 
         if (time >= 6 && time < 18) {
+            
+            day = true;
             
             return Math.max(max,weather.main.temp);
 
@@ -18,13 +28,18 @@ const DaySummaryPanel = (props) => {
 
         return max;
 
-    }, 0) - 273);
+    }, 0) -273);
 
-   const nightLow = Math.round(props.weather.reduce((min,weather) => {
+    const dayHi = day ? hi : 'N/A';
+
+
+    const low = Math.round(props.weather.reduce((min,weather) => {
     
         const time = weather.dt_txt.slice(-8,-6);
 
         if (time < 6 || time >= 18) {
+
+            night = true;
 
             return Math.min(min,weather.main.temp);
 
@@ -33,6 +48,20 @@ const DaySummaryPanel = (props) => {
         return min;
 
     }, Infinity) - 273);
+
+    const nightLow = night ? low : 'N/A';
+
+    const code = props.weather[0].weather[0].id;
+
+    let weatherIcon = weatherIcons[code].icon;
+
+    if (!(code > 699 && code < 800) && !(code > 899 && code < 1000)) {
+
+        weatherIcon = 'day-' + weatherIcon;
+        
+      }
+    
+    weatherIcon = 'wi wi-' + weatherIcon;
 
     const DayWrapper = styled.div`
     
@@ -43,16 +72,17 @@ const DaySummaryPanel = (props) => {
         background-color: #ecf0f1;
         border-radius: 5px;
         padding: 5px 10px 0px 10px;
-        display:flex;
-        flex-direction:column;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
     
     `;
 
     const DayTitle = styled.h3`
 
         text-transform: uppercase;
-        display:flex;
-        justify-content:space-between;
+        display: flex;
+        justify-content: space-between;
 
         span {
 
@@ -64,9 +94,9 @@ const DaySummaryPanel = (props) => {
 
     const DayIcon = styled.div`
 
-        flex:1;
-        font-size:100px;
-        display:flex;
+        flex: 1;
+        font-size: 100px;
+        display: flex;
 
     `;
 
@@ -78,22 +108,22 @@ const DaySummaryPanel = (props) => {
 
     const DaytimeTemp = styled.div`
 
-        padding-bottom:2px;
+        padding-bottom: 2px;
     
     `;
 
     const NightTimeTemp = styled.div`
 
-    padding-bottom:20px;
+    padding-bottom: 15px;
 
     `;
     
     return (
 
         <DayWrapper>
-            <DayTitle>{new Date(props.day).toLocaleDateString('en-GB', { weekday: 'long' })} <span>{props.day}</span></DayTitle>
+            <DayTitle>{new Date(props.day).toLocaleDateString('en-GB', { weekday: 'short' })} <span>{props.day}</span></DayTitle>
             <DayIcon>
-                <Icon className="wi wi-night-sleet" />
+                <Icon className={weatherIcon} />
             </DayIcon>
             <DaytimeTemp>Max. Day: {dayHi}</DaytimeTemp>
             <NightTimeTemp>Min. Night: {nightLow}</NightTimeTemp>

@@ -10,7 +10,7 @@ const Button = styled.button`
     display:block;
     letter-spacing:1px;
     text-transform:uppercase;
-
+    cursor:pointer;
 
 `;
 
