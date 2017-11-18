@@ -13,6 +13,6 @@ npm start
 
 App can be viewed at http://localhost:3000
 
-##Demo
+## Demo
 
 https://r-amos.github.io/weather-app/
