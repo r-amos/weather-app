@@ -27,13 +27,18 @@ class SearchContainer extends React.Component {
     onButtonClick = () => {
         
         this.props.fetchWeather(this.state.term);
-        this.setState({term:''});
+        this.updateSearchTerm('');
         
     };
 
     onEnter = ({key}) => {
 
-        if (key === 'Enter') this.props.fetchWeather(this.state.term)
+        if (key === 'Enter') {
+            
+            this.props.fetchWeather(this.state.term)
+            this.updateSearchTerm('');
+            
+        }
 
     }
 
