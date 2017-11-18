@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import styled from 'styled-components';
 
+import SearchBar from './search-container';
+import Title from '../components/title';
 import SummaryPanel from '../components/summary-panel';
 import DaySummaryPanels from '../components/day-summary-panels';
 import DayDetail from '../components/day-detail';
@@ -21,7 +23,7 @@ const Container = styled.div`
 
 `;
 
-class WeatherPanel extends Component  {
+class WeatherContainer extends Component  {
 
     constructor(props) {
 
@@ -90,17 +92,22 @@ class WeatherPanel extends Component  {
   
         if(this.state.showDetail){
 
-            this.props.toggleSearchBar();
-
             const props = this.state.detail;
             
-            return <DayDetail weather={props.weather} city={props.city} day={props.day} goBack={() => this.setState({showDetail:false})} />
+            return (
+                    <div>
+                        <Title text={`${props.city }: ${props.day}`} align={'center'} />
+                        <DayDetail weather={props.weather} city={props.city} day={props.day} goBack={() => this.setState({showDetail:false})} />
+                    </div>
+            );
                             
         }
 
         return (
 
             <div>
+                <Title text={'Weather'}/>
+                <SearchBar />
                 {summaryPanels}
             </div>
 
@@ -119,4 +126,4 @@ const mapStateToProps = ({weather}) => {
 
 }
 
-export default connect(mapStateToProps, null)(WeatherPanel);
+export default connect(mapStateToProps, null)(WeatherContainer);

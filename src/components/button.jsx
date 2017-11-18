@@ -12,7 +12,7 @@ const Button = styled.button`
     text-transform:uppercase;
     cursor:pointer;
     background: ${props => props.primary ? '#e74c3c' : '#2980b9'};
-    width:100px;
+    width:120px;
 
 `;
 

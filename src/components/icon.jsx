@@ -8,9 +8,6 @@ import '../../node_modules/weather-icons/css/weather-icons.css';
 
 const Icon = (props) => {
 
-    console.log(props);
-
-
     const StyledIcon = styled.i`
     
         margin: auto;

@@ -6,8 +6,6 @@ import Icon from './icon.jsx';
 
 const HourSummary = (props) => {
 
-    console.log(props);
-
     const HourContainer = styled.div`
 
         flex-grow: 1;

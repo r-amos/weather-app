@@ -51,7 +51,7 @@ const SearchBar = (props) => {
                     value={props.term} 
                     onKeyPress={props.onEnter} 
                 />
-                <Button onClick={props.onButtonClick}>Search</Button>
+                <Button onClick={props.onButtonClick}>Add City +</Button>
             </Container>
         </Wrapper>
 

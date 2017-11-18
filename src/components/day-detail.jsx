@@ -19,16 +19,7 @@ const DayDetail = (props) => {
         margin-bottom:20px;
     
     `;
-
-    const DayTitle = styled.h1`
-
-        padding-bottom:20px;
-        font-size :2rem;
-        margin:auto;
-        text-transform:uppercase;
-    
-    `
-    
+ 
     const DayDetailContainer = styled.div`
 
         display: flex;
@@ -37,7 +28,7 @@ const DayDetail = (props) => {
 
     `;
 
-    const hourSumarrys = props.weather.map((hour) => { 
+    const hourSummarys = props.weather.map((hour) => { 
     
         return <HourSummary key={hour.dt} {...hour} />
     
@@ -46,10 +37,9 @@ const DayDetail = (props) => {
     return (
         
         <Container>
-            <DayTitle>{props.city} {props.day}</DayTitle>
             <DayContainer>
                 <DayDetailContainer>
-                    {hourSumarrys} 
+                    {hourSummarys} 
                 </DayDetailContainer>
             </DayContainer>
             <Button primary onClick={props.goBack}>Back</Button>

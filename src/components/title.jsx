@@ -2,12 +2,13 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-const AppTitle = ({text}) => {
-    
+const Title = (props) => {
+  
     const Wrapper = styled.section`
 
         padding:20px 0px;
         margin: 0px 20px;
+        text-align: ${() => props.align === 'center' ? 'center' : 'left'};
 
     `;
 
@@ -21,11 +22,11 @@ const AppTitle = ({text}) => {
     return (
 
         <Wrapper>
-            <Title>{text}</Title>
+            <Title>{props.text}</Title>
         </Wrapper>
 
     )
 
 }  
 
-export default AppTitle;
+export default Title;
