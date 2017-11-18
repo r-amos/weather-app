@@ -29,7 +29,9 @@ class WeatherPanel extends Component  {
 
         this.state = {
 
-            showDetail: false
+            showDetail: false,
+
+            detail: {}
 
         };
 
@@ -80,7 +82,7 @@ class WeatherPanel extends Component  {
 
                 <Container key={index}>
                     <SummaryPanel {...weather} />
-                    <DaySummaryPanels data={daySummary} city={weather.city} showDetails={(value) => this.setState({showDetail:value})} />
+                    <DaySummaryPanels data={daySummary} city={weather.city} showDetails={(value,data) => this.setState({showDetail:value, detail:data})} />
                 </Container>
             )
 
@@ -89,7 +91,7 @@ class WeatherPanel extends Component  {
         
         if(this.state.showDetail){
             
-            return <DayDetail {...this.props.detail} />
+            return <DayDetail {...this.state.detail} />
                             
         }
 

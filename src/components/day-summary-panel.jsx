@@ -1,13 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import styled from 'styled-components';
 
 import weatherIcons from './icon.json';
 
 import '../../node_modules/weather-icons/css/weather-icons.css';
-
-import { getDetail } from '../redux/actions/actions';
 
 const DaySummaryPanel = (props) => {
 
@@ -123,8 +120,7 @@ const DaySummaryPanel = (props) => {
 
     const showDetail = () => {
 
-        props.showDetails(true);
-        props.getDetail(props);
+        props.showDetails(true,props);
 
     }
     
@@ -143,14 +139,4 @@ const DaySummaryPanel = (props) => {
 
 }
 
-const mapDispatchToProps = dispatch => {
-    
-        return {
-    
-            getDetail: (searchTerm) => dispatch(getDetail(searchTerm)),
-    
-        }
-        
-    }
-    
-export default connect(null,mapDispatchToProps)(DaySummaryPanel);
+export default DaySummaryPanel;
