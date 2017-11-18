@@ -87,11 +87,12 @@ class WeatherPanel extends Component  {
             )
 
         });
-
-        
+  
         if(this.state.showDetail){
+
+            const props = this.state.detail;
             
-            return <DayDetail {...this.state.detail} />
+            return <DayDetail weather={props.weather} city={props.city} day={props.day} goBack={() => this.setState({showDetail:false})} />
                             
         }
 

@@ -2,9 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import weatherIcons from './icon.json';
-
-import '../../node_modules/weather-icons/css/weather-icons.css';
+import Icon from './icon.jsx';
 
 const DaySummaryPanel = (props) => {
 
@@ -51,18 +49,6 @@ const DaySummaryPanel = (props) => {
 
     const nightLow = night ? low : 'N/A';
 
-    const code = props.weather[0].weather[0].id;
-
-    let weatherIcon = weatherIcons[code].icon;
-
-    if (!(code > 699 && code < 800) && !(code > 899 && code < 1000)) {
-
-        weatherIcon = 'day-' + weatherIcon;
-        
-      }
-    
-    weatherIcon = 'wi wi-' + weatherIcon;
-
     const DayWrapper = styled.div`
     
         flex-grow: 1;
@@ -100,12 +86,6 @@ const DaySummaryPanel = (props) => {
 
     `;
 
-    const Icon = styled.i`
-        
-        margin: auto;
-
-    `;
-
     const DaytimeTemp = styled.div`
 
         padding-bottom: 2px;
@@ -129,7 +109,7 @@ const DaySummaryPanel = (props) => {
         <DayWrapper onClick={showDetail}>
             <DayTitle>{weekDay} <span>{props.day}</span></DayTitle>
             <DayIcon>
-                <Icon className={weatherIcon} />
+                <Icon code={props.weather[0].weather[0].id} />
             </DayIcon>
             <DaytimeTemp>Max. Day: {dayHi}</DaytimeTemp>
             <NightTimeTemp>Min. Night: {nightLow}</NightTimeTemp>

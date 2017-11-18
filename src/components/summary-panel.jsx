@@ -8,7 +8,9 @@ const SummaryPanel = (props) => {
 
     const Container = styled.div`
 
+        
         width: 20%;
+        flex-grow:1;
         margin-right: 10px;
         border-right: 1px solid #95a5a6;
         display:flex;

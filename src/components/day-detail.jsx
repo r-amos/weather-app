@@ -1,17 +1,56 @@
 import React from 'react';
 
+import HourSummary from './hour-summary';
+import Button from './button';
+
 import styled from 'styled-components';
 
 const DayDetail = (props) => {
 
-    console.log(props);
+    const Container = styled.div`
+    
+        margin:20px;
+    
+    `;
+    
+    const DayContainer = styled.div`
+
+        border-radius:5px;
+        margin-bottom:20px;
+    
+    `;
+
+    const DayTitle = styled.div`
+
+        padding-bottom:20px;
+    
+    `
+    
+    const DayDetailContainer = styled.div`
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap:wrap;
+
+    `;
+
+    const hourSumarrys = props.weather.map((hour) => { 
+    
+        return <HourSummary key={hour.dt} {...hour} />
+    
+    });
 
     return (
-        <div>
-            <h1>{props.city} {props.day}</h1>
-            <button onClick={()=> props.showDetails(false)}>Back</button>
-        </div>
-
+        
+        <Container>
+            <DayTitle>{props.city} {props.day}</DayTitle>
+            <DayContainer>
+                <DayDetailContainer>
+                    {hourSumarrys} 
+                </DayDetailContainer>
+            </DayContainer>
+            <Button primary onClick={props.goBack}>Back</Button>
+        </Container>
     ); 
 
 }
