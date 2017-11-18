@@ -44,6 +44,8 @@ class SearchContainer extends React.Component {
 
     render() {
 
+        if(this.props.hide) return null;
+
         return <SearchBar 
                     onButtonClick={this.onButtonClick} 
                     onInputChange={this.updateSearchTerm} 

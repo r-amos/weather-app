@@ -90,6 +90,8 @@ class WeatherPanel extends Component  {
   
         if(this.state.showDetail){
 
+            this.props.toggleSearchBar();
+
             const props = this.state.detail;
             
             return <DayDetail weather={props.weather} city={props.city} day={props.day} goBack={() => this.setState({showDetail:false})} />
@@ -107,13 +109,11 @@ class WeatherPanel extends Component  {
 
 }
 
-const mapStateToProps = ({weather, detail}) => {
+const mapStateToProps = ({weather}) => {
 
     return {
 
-        weather: weather,
-
-        detail: detail
+        weather: weather
 
     }
 

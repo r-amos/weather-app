@@ -20,9 +20,12 @@ const DayDetail = (props) => {
     
     `;
 
-    const DayTitle = styled.div`
+    const DayTitle = styled.h1`
 
         padding-bottom:20px;
+        font-size :2rem;
+        margin:auto;
+        text-transform:uppercase;
     
     `
     

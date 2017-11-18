@@ -16,7 +16,9 @@ const HourSummary = (props) => {
         color: #95a5a6;
         border-radius:5px;
         padding:10px;
-        max-width:15%;
+        flex: 1;
+        display:flex;
+        flex-direction:column;
 
         i {
 
@@ -28,7 +30,6 @@ const HourSummary = (props) => {
 
         }
 
-    
     `;
 
     const Day = styled.div`
@@ -43,6 +44,14 @@ const HourSummary = (props) => {
     const Text = styled.div`
 
         margin:10px;
+        font-style:italic;
+    
+    `;
+
+    const Temp = styled.div`
+
+        margin:10px;
+        margin-top:auto;
     
     `;
 
@@ -53,9 +62,7 @@ const HourSummary = (props) => {
                 <Day><h3>{props.dt_txt.split(' ')[1]}</h3></Day>
                 <Icon code={props.weather[0].id} />
                 <Text>{props.weather[0].description}</Text>
-                <Text>Temp: {Math.round(props.main.temp -273)}</Text>
-                <Text>{props.wind.speed}</Text>
-                <Text>{props.wind.deg}</Text>
+                <Temp>Temp: {Math.round(props.main.temp -273)}</Temp>
         </HourContainer>
 
     ) 

@@ -19,6 +19,19 @@ injectGlobal`
 `;
 
 class App extends Component {
+
+  constructor(props){
+
+    super(props);
+
+    this.state = {
+
+      displaySearchBar: false
+    
+    };
+
+  }
+
   render() {
     return (
       <div className="App">
@@ -26,8 +39,8 @@ class App extends Component {
           <AppTitle text={'Weather'}/>
         </header>
         <div>
-          <SearchContainer />
-          <WeatherPanel />
+          <SearchContainer hide={this.state.displaySearchBar} />
+          <WeatherPanel toggleSearchBar={()=>this.setState({displaySearchBar:true})} />
         </div>
       </div>
     );
