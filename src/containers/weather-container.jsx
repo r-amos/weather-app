@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 import styled from 'styled-components';
 
 import SummaryPanel from '../components/summary-panel';
 import DaySummaryPanels from '../components/day-summary-panels';
+import DayDetail from '../components/day-detail';
 
 const Container = styled.div`
 
@@ -20,69 +21,96 @@ const Container = styled.div`
 
 `;
 
-const WeatherPanel = (props) => {
+class WeatherPanel extends Component  {
 
-    const convertTemp = temp => Math.round(temp - 273)
+    constructor(props) {
 
-    const summaryPanels = props.weather.map(({current, forecast}, index) => {
+        super(props);
 
-        const weather = {
+        this.state = {
+
+            showDetail: false
+
+        };
+
+    }
+
+    render() {
+
+        const convertTemp = temp => Math.round(temp - 273);
+
+        let weather;
+
+        let daySummary;
+
+        const summaryPanels = this.props.weather.map(({current, forecast}, index) => {
+
+            weather = {
+                
+                city: current.name,
+
+                temp: {
+
+                    average: convertTemp(current.main.temp),
+                    max: convertTemp(current.main['temp_max']),
+                    min: convertTemp(current.main['temp_min'])
+
+                },
+
+                description: current.weather[0].description,
+                wind: current.wind,
+                coord: current.coord
+
+            }
+
+    
+            const days = forecast.list.map(timeframe => timeframe['dt_txt'].substring(0,10)).filter((date,index, array) => array.indexOf(date) === index);
             
-            city: current.name,
+            daySummary = new Map();
+            
+            days.forEach((key) => {
 
-            temp: {
+                const value = forecast.list.filter((timeframe) => timeframe['dt_txt'].substring(0,10) === key);
 
-                average: convertTemp(current.main.temp),
-                max: convertTemp(current.main['temp_max']),
-                min: convertTemp(current.main['temp_min'])
+                daySummary.set(key,value);
 
-            },
+            });
 
-            description: current.weather[0].description,
-            wind: current.wind,
-            coord: current.coord
+            return ( 
 
-        }
-
- 
-        const days = forecast.list.map(timeframe => timeframe['dt_txt'].substring(0,10)).filter((date,index, array) => array.indexOf(date) === index);
-        
-        let daySummary = new Map();
-        
-        days.forEach((key) => {
-
-            const value = forecast.list.filter((timeframe) => timeframe['dt_txt'].substring(0,10) === key);
-
-            daySummary.set(key,value);
+                <Container key={index}>
+                    <SummaryPanel {...weather} />
+                    <DaySummaryPanels data={daySummary} city={weather.city} showDetails={(value) => this.setState({showDetail:value})} />
+                </Container>
+            )
 
         });
 
-        return ( 
+        
+        if(this.state.showDetail){
+            
+            return <DayDetail {...this.props.detail} />
+                            
+        }
 
-            <Container key={index}>
-                <SummaryPanel {...weather} />
-                <DaySummaryPanels data={daySummary} />
-            </Container>
+        return (
 
-            )
+            <div>
+                {summaryPanels}
+            </div>
 
-    });
-
-    return (
-
-        <div>
-            {summaryPanels}
-        </div>
-
-    );
+        );
+    }
 
 }
 
-const mapStateToProps = ({weather}) => {
+const mapStateToProps = ({weather, detail}) => {
 
     return {
 
-        weather: weather
+        weather: weather,
+
+        detail: detail
 
     }
 

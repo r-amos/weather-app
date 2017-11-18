@@ -8,7 +8,7 @@ const DaySummaryPanels = (props) => {
 
         Array.from(props.data.keys()).map((day) => {
             
-            return <DaySummaryPanel key={day} day={day} weather={props.data.get(day)} />
+            return <DaySummaryPanel key={day} day={day} weather={props.data.get(day) } city={props.city} showDetails={props.showDetails} />
                     
         })
 

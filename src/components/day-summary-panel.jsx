@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import styled from 'styled-components';
 
@@ -6,9 +7,11 @@ import weatherIcons from './icon.json';
 
 import '../../node_modules/weather-icons/css/weather-icons.css';
 
+import { getDetail } from '../redux/actions/actions';
+
 const DaySummaryPanel = (props) => {
 
-    console.log(props);
+    const weekDay = new Date(props.day).toLocaleDateString('en-GB', { weekday: 'short' });
 
     let day = false;
 
@@ -117,11 +120,18 @@ const DaySummaryPanel = (props) => {
     padding-bottom: 15px;
 
     `;
+
+    const showDetail = () => {
+
+        props.showDetails(true);
+        props.getDetail(props);
+
+    }
     
     return (
 
-        <DayWrapper>
-            <DayTitle>{new Date(props.day).toLocaleDateString('en-GB', { weekday: 'short' })} <span>{props.day}</span></DayTitle>
+        <DayWrapper onClick={showDetail}>
+            <DayTitle>{weekDay} <span>{props.day}</span></DayTitle>
             <DayIcon>
                 <Icon className={weatherIcon} />
             </DayIcon>
@@ -133,4 +143,14 @@ const DaySummaryPanel = (props) => {
 
 }
 
-export default DaySummaryPanel;
+const mapDispatchToProps = dispatch => {
+    
+        return {
+    
+            getDetail: (searchTerm) => dispatch(getDetail(searchTerm)),
+    
+        }
+        
+    }
+    
+export default connect(null,mapDispatchToProps)(DaySummaryPanel);

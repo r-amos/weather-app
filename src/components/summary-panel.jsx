@@ -6,8 +6,6 @@ import styled from 'styled-components';
 
 const SummaryPanel = (props) => {
 
-    console.log(props);
-
     const Container = styled.div`
 
         width: 20%;
